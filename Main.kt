@@ -17,30 +17,28 @@ fun main() {
     // --------------------
     var likes = 0   // число лайков.
     var word = ""
-    val scanner = Scanner(System.`in`)
+    var input = ""
     // --------------------
 
     // Основной блок программы
     // --------------------
     print("Введите кол-во лайков: ")
-    likes = scanner.nextInt()
+    input = readln()   // Считываем строку
 
-    if ((likes % 10 == 1) && (likes != 11)) {
-        word = "человеку"
-    } else if ((likes % 10 in 2..4) && (likes !=  12)  && (likes !=  13) && (likes !=  14)) {
-        word = "людям"
-    } else if (likes % 100 in 11..14) {
-        word = "людям"
+    if (input.isNotEmpty()) {  // Проверяем, что строка не пустая
+        likes = input.toInt()  // Преобразовываем строку в число
+        if ((likes % 10 == 1) && (likes % 100 != 11)) {
+            word = "человеку"
+        } else {
+            word = "людям"
+        }
     } else {
-        word = "людям"
+        print("Проверьте ввод данных !")
     }
 
     // likes % 10 - последняя цифра числа
     // likes % 100 - последние 2 цифра числа
 
     print("Понравилось $likes $word")
-
-    // Очищаем буфер сканера
-    scanner.nextLine()
     // --------------------
 }
